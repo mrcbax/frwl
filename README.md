@@ -59,3 +59,5 @@ We <3 you!
 **/u/BigT905 and /u/orangejuice3 for the Shodan results! Massive contribution thank you!**
 
 /u/meostro Final compression command.
+
+Colseph Awesome script mods

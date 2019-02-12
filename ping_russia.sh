@@ -13,14 +13,14 @@ SERVER="" #insert any server IP here
 while true
 do
     TIME=$(date +%s)
-	  SIZE=$(du -B 50M | cut -d "	" -f 1)
-	  traceroute $SERVER -I > $ITER.$TIME.old
-	  ITER=$(( ITER + 1 ))
-	  if [ $SIZE -gt 1 ]
-	  then
-		    XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.$TIME.$SERVER.tar.xz ./* --remove-files
-		    COMP_ITER=$(( COMP_ITER + 1 ))
-		    ITER=0
-	  fi
+    SIZE=$(du -B 50M | cut -d "	" -f 1)
+    traceroute $SERVER -I > $ITER.$TIME.old
+    ITER=$(( ITER + 1 ))
+    if [ $SIZE -gt 1 ]
+    then
+        XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.$TIME.$SERVER.tar.xz ./* --remove-files
+        COMP_ITER=$(( COMP_ITER + 1 ))
+        ITER=0
+    fi
     traceroute $SERVER -I > $ITER.$TIME.new
 done

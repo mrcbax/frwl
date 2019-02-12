@@ -25,6 +25,8 @@ Data will be hosted on IPFS. The data gets packaged into txz by the shell script
 
 The script creates logs in a weird way. Each file has a unique ID in the set and each set has a unique ID as well. The logs end in either `.new` or `.old` this allows me to use diff tools a little easier.
 
+final logs should be compressed in the same manner in the style `final.servername.tar.xz` with max compression in the hopes of saving even more space. You can join or stop at any time but please leave an IPFS hash as an issue or a pull request, I'll do my best to pin it as soon as I can.
+
 **Read the comments and code before proceeding.**
 
 

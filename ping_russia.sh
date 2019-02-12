@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#MUST BE RUN WITH SUPERUSER traceroute -I NEEDS IT!
+
 #run script from an empty folder. Have the script saved outside the folder. make
 #sure you have the from_russia_with_love_comp folder at the same level as the
 #script. Also, use a filesystem that timestamps properly just in case you mix up

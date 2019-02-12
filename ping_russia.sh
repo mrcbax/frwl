@@ -18,7 +18,7 @@ do
 	  ITER=$(( ITER + 1 ))
 	  if [ $SIZE -gt 1 ]
 	  then
-		    XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.$SERVER.tar.xz ./* --remove-files
+		    XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.$TIME.$SERVER.tar.xz ./* --remove-files
 		    COMP_ITER=$(( COMP_ITER + 1 ))
 		    ITER=0
 	  fi

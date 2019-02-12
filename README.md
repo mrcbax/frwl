@@ -8,6 +8,7 @@ Goals
 - Be the first to identify the new "great firewall" infrastructure.
 - Keep it decentralized, they can't hack everyone if they get angry.
 - Find news and articles to corroborate our findings.
+- Keep it running up to a week after Russia comes back online.
 - Run some pretty data analysis on it later.
 
 

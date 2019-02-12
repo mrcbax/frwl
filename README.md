@@ -31,6 +31,13 @@ Guidelines
 
 Your traceroute logs should have a bunch of data. but if there are a bunch of `***` next to a hop then you're behind some sort of nasty filtering firewall. Pop a hole in it to get clean data. We want hostnames not just latency.
 
+
+Extra stuff
+---
+
+The current shodan query for Russian NTP servers: `ntp country:"RU" port:"123"`
+
+
 Contributors
 ===
 

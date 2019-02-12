@@ -1,1 +1,9 @@
 #NTP server addresses here
+
+#These are pools. They'll give you the "best one" only use these to find direct links or new servers:
+0.ru.pool.ntp.org
+1.ru.pool.ntp.org
+2.ru.pool.ntp.org
+3.ru.pool.ntp.org
+
+#These are direct links. They're much better use these:

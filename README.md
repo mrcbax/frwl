@@ -56,4 +56,6 @@ Contributors
 We <3 you!
 ---
 
-**/u/BigT905 Shodan results! Massive contribution thank you!***
+**/u/BigT905 Shodan results! Massive contribution thank you!**
+
+/u/maestro Final compression command.

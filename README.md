@@ -28,6 +28,10 @@ The script creates logs in a weird way. Each file has a unique ID in the set and
 **Read the comments and code before proceeding.**
 
 
+Current Statistics
+---
+It's about 14 compressed files a day or 31.5MB per day with a projected size of about 2GB of data per server for the entire 2 month long endeavor.
+
 Guidelines
 ---
 

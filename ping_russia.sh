@@ -12,8 +12,9 @@ COMP_ITER=0
 SERVER="" #insert any server IP here
 while true
 do
+    TIME=$(date +%s)
 	  SIZE=$(du -B 50M | cut -d "	" -f 1)
-	  traceroute $SERVER -I > $ITER.old
+	  traceroute $SERVER -I > $ITER.$TIME.old
 	  ITER=$(( ITER + 1 ))
 	  if [ $SIZE -gt 1 ]
 	  then
@@ -21,5 +22,5 @@ do
 		    COMP_ITER=$(( COMP_ITER + 1 ))
 		    ITER=0
 	  fi
-    traceroute $SERVER -I > $ITER.new
+    traceroute $SERVER -I > $ITER.$TIME.new
 done

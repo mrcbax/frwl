@@ -9,16 +9,17 @@
 
 ITER=0
 COMP_ITER=0
+SERVER="" #insert any server IP here
 while true
 do
 	  SIZE=$(du -B 50M | cut -d "	" -f 1)
-	  traceroute ntp2.aas.ru -I > $ITER.old #insert any server IP here
+	  traceroute $SERVER -I > $ITER.old
 	  ITER=$(( ITER + 1 ))
 	  if [ $SIZE -gt 1 ]
 	  then
-		    XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.tar.xz ./* --remove-files
+		    XZ_OPT=-9 tar cJf ../from_russia_with_love_comp/$COMP_ITER.$SERVER.tar.xz ./* --remove-files
 		    COMP_ITER=$(( COMP_ITER + 1 ))
 		    ITER=0
 	  fi
-    traceroute ntp2.aas.ru -I > $ITER.new
+    traceroute $SERVER -I > $ITER.new
 done

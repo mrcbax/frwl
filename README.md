@@ -79,10 +79,12 @@ Contributors
 We <3 you!
 ---
 
-**/u/BigT905 and /u/orangejuice3 for the Shodan results! Massive contribution thank you!**
+- **/u/BigT905 and /u/orangejuice3 for the Shodan results! Massive contribution thank you!**
 
-/u/meostro Final compression command.
+- /u/meostro: Final compression command.
 
-Colseph Awesome script mods
+- Colseph: Awesome script mods
 
-Danuke for Dockerfile and image creation.
+- Danuke: for Dockerfile and image creation.
+
+- gidoBOSSftw5731: FreeBSD support.

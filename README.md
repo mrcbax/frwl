@@ -3,6 +3,10 @@ FRWL: From Russia with love
 
 link to inception [Reddit thread](https://www.reddit.com/r/DataHoarder/comments/apsd7v/with_russia_going_offline_for_a_test_some_time/)
 
+There is a survey available for those participating: [Google Form](https://goo.gl/forms/l2zbfzblneP6D6sE3)
+
+There is also a place to submit any IPFS hashes of data you've collected: [Google Form](https://goo.gl/forms/o3vXwj4NPzODAttR2)
+
 Goals
 ---
 

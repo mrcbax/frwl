@@ -16,7 +16,7 @@ COMP_ITER=0
 SERVER="" #insert any server IP here
 WORKING_DIR="./working_dir" #directory for uncompressed raw data
 TARBALL_DIR="./from_russia_with_love_comp" #directory for compressed tarballs
-
+DEPENDENCIES=(traceroute tar); #not every distro has these pre-installed
 
 #~~~~~~~~~~~~~#
 #~ Functions ~#
@@ -58,6 +58,12 @@ _tarBall() {
 _log date "[main]script start"
 _checkPath "$WORKING_DIR"
 _checkPath "$TARBALL_DIR"
+
+for p in "${DEPENDENCIES[@]}"; do
+	if ! [ -x "$(command -v $p)" ]; then
+        echo "$p is not installed"; exit 1;
+    fi
+done
 
 while true
 do

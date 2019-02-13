@@ -1,4 +1,4 @@
-FRWL From Russia with love
+FRWL: From Russia with love
 ===
 
 link to inception [Reddit thread](https://www.reddit.com/r/DataHoarder/comments/apsd7v/with_russia_going_offline_for_a_test_some_time/)
@@ -25,7 +25,7 @@ Data will be hosted on IPFS. The data gets packaged into txz by the shell script
 
 The script creates logs in a weird way. Each file has a unique ID in the set and each set has a unique ID as well. The logs end in either `.new` or `.old` this allows me to use diff tools a little easier.
 
-final logs should be compressed in the same manner in the style `final.servername.tar.xz` with max compression in the hopes of saving even more space. You can join or stop at any time but please leave an IPFS hash as an issue or a pull request, I'll do my best to pin it as soon as I can. You can use this command to do the final compression:
+final logs should be compressed in the same manner in the style `final.servername.yourtimezone.tar.xz` with max compression in the hopes of saving even more space. You can join or stop at any time but please leave an IPFS hash as an issue or a pull request, I'll do my best to pin it as soon as I can. You can use this command to do the final compression:
 
 `xz -9evv --lzma2=dict=128MiB,lc=4,lp=0,pb=2,mode=normal,nice=273,mf=bt4,depth=1024`
 

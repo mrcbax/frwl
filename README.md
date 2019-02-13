@@ -49,6 +49,8 @@ Extra stuff
 
 The current shodan query for Russian NTP servers: `ntp country:"RU" port:"123"`
 
+The deduplication script can be used so you can dump any additional IPs at the bottom of the list, then remove any duplicates.
+
 
 Contributors
 ===

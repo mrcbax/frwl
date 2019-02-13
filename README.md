@@ -52,6 +52,23 @@ The current shodan query for Russian NTP servers: `ntp country:"RU" port:"123"`
 The deduplication script can be used so you can dump any additional IPs at the bottom of the list, then remove any duplicates.
 
 
+Docker
+===
+
+Dockerfile
+---
+
+The dockerfile and the ping_russia_docker.sh script has added the arguement variable to the server declaration so that it is passed and not hard set.  SERVER="" > SERVER="$1"
+
+
+Docker Run
+---
+
+An iamge has been provided at https://hub.docker.com/r/danuke/frwl
+
+docker run -d --name frwl -v "localvolume":/from_russia_with_love_comp -e ServerIP="IP/Host" danukefl/frwl
+
+
 Contributors
 ===
 
@@ -63,3 +80,5 @@ We <3 you!
 /u/meostro Final compression command.
 
 Colseph Awesome script mods
+
+Danuke for Dockerfile and image creation.

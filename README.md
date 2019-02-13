@@ -63,7 +63,7 @@ Docker
 Dockerfile
 ---
 
-The dockerfile and the ping_russia_docker.sh script has added the arguement variable to the server declaration so that it is passed and not hard set.  SERVER="" > SERVER="$1"
+The dockerfile and the ping_russia_docker.sh script has added the arguement variable to the server declaration so that it is passed and not hard set.  `SERVER="" > SERVER="$1"`
 
 
 Docker Run

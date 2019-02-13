@@ -66,5 +66,5 @@ do
 	traceroute -I $SERVER > "$WORKING_DIR/$ITER.$TIME.old"
 	ITER=$(( ITER + 1 ))
 	[ $SIZE -gt 1 ] && _tarBall
-	traceroute $SERVER -I > "$WORKING_DIR/$ITER.$TIME.new"
+	traceroute -I $SERVER > "$WORKING_DIR/$ITER.$TIME.new"
 done

@@ -63,7 +63,7 @@ while true
 do
 	TIME=$(date +%s)
 	SIZE=$(du -B 50M "$WORKING_DIR" | cut -d "	" -f 1)
-	traceroute $SERVER -I > "$WORKING_DIR/$ITER.$TIME.old"
+	traceroute -I $SERVER > "$WORKING_DIR/$ITER.$TIME.old"
 	ITER=$(( ITER + 1 ))
 	[ $SIZE -gt 1 ] && _tarBall
 	traceroute $SERVER -I > "$WORKING_DIR/$ITER.$TIME.new"

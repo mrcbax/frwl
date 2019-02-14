@@ -49,6 +49,8 @@ Your traceroute logs should have a bunch of data. but if there are a bunch of `*
 
 Watch for updates to the script they may be important for data processing. You may have to work them into your environment somehow.
 
+If you are editing the code tabs are 4 spaces. Don't make me write a `CONTRIBUTING.md`.
+
 
 Extra stuff
 ---

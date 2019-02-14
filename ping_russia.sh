@@ -50,6 +50,7 @@ _tarBall() {
         _log date "[_tarBall]created tarball '$COMP_ITER.$TIME.$SERVER.tar.xz'"
         COMP_ITER=$(( COMP_ITER + 1 ))
         ITER=0
+
 }
 
 #~~~~~~~~~~~~~~~~#

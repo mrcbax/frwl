@@ -45,11 +45,11 @@ _checkPath() {
 }
 
 _tarBall() {
-	#~creates tarball of collected data with id/timestamp range
-	XZ_OPT=-9 tar cJf "$TARBALL_DIR/$COMP_ITER.$TIME.$SERVER.tar.xz" "$WORKING_DIR"/* --remove-files
-	_log date "[_tarBall]created tarball '$COMP_ITER.$TIME.$SERVER.tar.xz'"
-	COMP_ITER=$(( COMP_ITER + 1 ))
-	ITER=0
+        #~creates tarball of collected data with id/timestamp range
+        XZ_OPT=-9 tar cJf "$TARBALL_DIR/$COMP_ITER.$TIME.$SERVER.tar.xz" "./$WORKING_DIR"/* && rm "$WORKING_DIR"/*
+        _log date "[_tarBall]created tarball '$COMP_ITER.$TIME.$SERVER.tar.xz'"
+        COMP_ITER=$(( COMP_ITER + 1 ))
+        ITER=0
 }
 
 #~~~~~~~~~~~~~~~~#

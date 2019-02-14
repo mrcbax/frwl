@@ -13,6 +13,7 @@
 LOG_FILE="./frwl.$(date +%Y-%m-%d).log" #log file(use /dev/null if u dont want logging)
 ITER=0
 PROBES=$1
+SERVERS=./servers.txt
 COMP_ITER=0
 WORKING_DIR="./working_dir" #directory for uncompressed raw data
 TARBALL_DIR="./from_russia_with_love_comp" #directory for compressed tarballs
@@ -73,7 +74,7 @@ fi
 
 while true
 do
-  for SERVER in $(grep -v /usr/bin/sort -R ./servers.text | head -${PROBES}); do
+  for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do
     TIME=$(date +%s)
     SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/${ITER}.${TIME}.old"

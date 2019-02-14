@@ -7,7 +7,7 @@ There is a survey available for those participating: [Google Form](https://goo.g
 
 There is also a place to submit any IPFS hashes of data you've collected: [Google Form](https://goo.gl/forms/o3vXwj4NPzODAttR2)
 
-If you all would like a place to chat I've set up an orbit channel (IPFS based chat): [Orbit Channel](https://orbit.chat/#/channel/frwl)
+If you all would like a place to chat I've set up an orbit channel (IPFS based chat): [Orbit Channel](https://orbit.chat/#/channel/frwl) (Just join #frwl by clicking the channel menu in the top left. Seems hot-linking doesn't work.)
 
 Goals
 ---

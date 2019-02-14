@@ -12,8 +12,8 @@
 
 LOG_FILE="./frwl.$(date +%Y-%m-%d).log" #log file(use /dev/null if u dont want logging)
 ITER=0
+PROBES=$1
 COMP_ITER=0
-SERVER="" #insert any server IP here
 WORKING_DIR="./working_dir" #directory for uncompressed raw data
 TARBALL_DIR="./from_russia_with_love_comp" #directory for compressed tarballs
 DEPENDENCIES=(traceroute tar); #not every distro has these pre-installed
@@ -29,11 +29,11 @@ _log() {
 	case $1 in
 		date)
 			#~appends date to front
-			printf '%s\n' "`date +%Y-%m-%d_%T` ---  $2" >> $LOG_FILE
+			printf '%s\n' "`date +%Y-%m-%d_%T` ---  $2" >> ${LOG_FILE}
 			;;
 		*)
 			#~just logs
-			printf '%s\n' "$@" >> $LOG_FILE
+			printf '%s\n' "$@" >> ${LOG_FILE}
 			;;
 	esac
 }
@@ -46,18 +46,19 @@ _checkPath() {
 
 _tarBall() {
 	#~creates tarball of collected data with id/timestamp range
-	tar cjf "$TARBALL_DIR/$COMP_ITER.$TIME.$SERVER.tar.xz" "$WORKING_DIR"/* --remove-files
-	_log date "[_tarBall]created tarball '$COMP_ITER.$TIME.$SERVER.tar.xz'"
+	tar cjf "${TARBALL_DIR}/${COMP_ITER}.${TIME}.${SERVER}.tar.xz" "${WORKING_DIR}"/* --remove-files
+	_log date "[_tarBall]created tarball '${COMP_ITER}.${TIME}.${SERVER}.tar.xz'"
 	COMP_ITER=$(( COMP_ITER + 1 ))
 	ITER=0
 }
+
 
 #~~~~~~~~~~~~~~~~#
 #~ script_start ~#
 #~~~~~~~~~~~~~~~~#
 _log date "[main]script start"
-_checkPath "$WORKING_DIR"
-_checkPath "$TARBALL_DIR"
+_checkPath "${WORKING_DIR}"
+_checkPath "${TARBALL_DIR}"
 
 for p in "${DEPENDENCIES[@]}"; do
 	if ! [ -x "$(command -v $p)" ]; then
@@ -65,12 +66,19 @@ for p in "${DEPENDENCIES[@]}"; do
     fi
 done
 
+if [ ! -f ./servers.txt ] ; then
+  echo "Please provide a servers.txt file with a server per line."
+  exit(255)
+fi
+
 while true
 do
-	TIME=$(date +%s)
-	SIZE=$(du -B 50M "$WORKING_DIR" | cut -d "	" -f 1)
-	traceroute -I $SERVER > "$WORKING_DIR/$ITER.$TIME.old"
-	ITER=$(( ITER + 1 ))
-	[ $SIZE -gt 1 ] && _tarBall
-	traceroute -I $SERVER > "$WORKING_DIR/$ITER.$TIME.new"
+  for SERVER in $(grep -v /usr/bin/sort -R ./servers.text | head -${PROBES}); do
+    TIME=$(date +%s)
+    SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
+    traceroute -n -I ${SERVER} > "${WORKING_DIR}/${ITER}.${TIME}.old"
+    ITER=$(( ITER + 1 ))
+    [ ${SIZE} -gt 1 ] && _tarBall
+    traceroute -I ${SERVER} > "${WORKING_DIR}/${ITER}.${TIME}.new"
+  done
 done

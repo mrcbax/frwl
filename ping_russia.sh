@@ -93,6 +93,6 @@ do
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
     [ ${SIZE} -gt 1 ] && _tarBall
-    traceroute -I ${SERVER} > "${WORKING_DIR}/${_randomDir}/${ITER}.${TIME}.new"
+    traceroute -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.new"
   done
 done

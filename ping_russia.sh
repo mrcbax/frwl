@@ -19,7 +19,7 @@ WORKING_DIR="./working_dir" #directory for uncompressed raw data
 TARBALL_DIR="./from_russia_with_love_comp" #directory for compressed tarballs
 DEPENDENCIES=(traceroute tar); #not every distro has these pre-installed
 
-if [ "X${PROBES}" = "X" ] ; then
+if [ "X${PROBES}" = "X" ]; then
   PROBES=1
 fi
 
@@ -76,8 +76,8 @@ _checkPath "${WORKING_DIR}"
 _checkPath "${TARBALL_DIR}"
 
 for p in "${DEPENDENCIES[@]}"; do
-	if ! [ -x "$(command -v $p)" ]; then
-        echo "$p is not installed"; exit 1;
+	if ! [ -x "$(which $p)" ]; then
+        echo "$p is not installed or in the scripts PATH"; exit 1;
     fi
 done
 
@@ -85,15 +85,15 @@ if [ ! -f ./servers.txt ] ; then
   echo "Please provide a servers.txt file with a server per line."
   exit
 fi
-
+i
 while true
 do
   for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do
     TIME=$(date +%s)
-    SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
+    SIZE=$(du -s -B 50M "${WORKING_DIR}" | awk '{print $1}')
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
-    if [ ${SIZE} -gt 1 ] ; then
+    if [ ${SIZE} -gt 1 ]; then
       _tarBall
       _checkPath "${WORKING_DIR}"
     fi

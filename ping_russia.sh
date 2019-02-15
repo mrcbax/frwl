@@ -28,37 +28,37 @@ fi
 #~~~~~~~~~~~~~#
 
 _log() {
-	#~just a log function
-	#~case logic for nice formating
-	#~logging is kept to a minimum to keep log files small
-	case $1 in
-		date)
-			#~appends date to front
-			printf '%s\n' "`date +%Y-%m-%d_%T` ---  $2" >> ${LOG_FILE}
-			;;
-		*)
-			#~just logs
-			printf '%s\n' "$@" >> ${LOG_FILE}
-			;;
-	esac
+    #~just a log function
+    #~case logic for nice formating
+    #~logging is kept to a minimum to keep log files small
+    case $1 in
+        date)
+            #~appends date to front
+            printf '%s\n' "`date +%Y-%m-%d_%T` ---  $2" >> ${LOG_FILE}
+            ;;
+        *)
+            #~just logs
+            printf '%s\n' "$@" >> ${LOG_FILE}
+            ;;
+    esac
 }
 
 _checkPath() {
-	# Creates all paths required in the working directory.
+    # Creates all paths required in the working directory.
   for one in {a..z} $(seq 0 9); do
     for two in {a..z} $(seq 0 9); do
       mkdir -p $1/${one}/${two}
     done
   done
-	_log date "[_checkPath]checking directory $1"
+    _log date "[_checkPath]checking directory $1"
 }
 
 _tarBall() {
-	#~creates tarball of collected data with id/timestamp range
-	tar -cjf "${TARBALL_DIR}/${_randomDir}/${COMP_ITER}.${TIME}.${SERVER}.tar.bz2" "${WORKING_DIR}"/* && rm -rf "$WORKING_DIR"/*
-	_log date "[_tarBall]created tarball '${COMP_ITER}.${TIME}.${SERVER}.tar.bz2'"
-	COMP_ITER=$(( COMP_ITER + 1 ))
-	ITER=0
+    #~creates tarball of collected data with id/timestamp range
+    tar -cjf "${TARBALL_DIR}/${_randomDir}/${COMP_ITER}.${TIME}.${SERVER}.tar.bz2" "${WORKING_DIR}"/* && rm -rf "$WORKING_DIR"/*
+    _log date "[_tarBall]created tarball '${COMP_ITER}.${TIME}.${SERVER}.tar.bz2'"
+    COMP_ITER=$(( COMP_ITER + 1 ))
+    ITER=0
 }
 
 # Get a random three level directory name.
@@ -76,7 +76,7 @@ _checkPath "${WORKING_DIR}"
 _checkPath "${TARBALL_DIR}"
 
 for p in "${DEPENDENCIES[@]}"; do
-	if ! [ -x "$(which $p)" ]; then
+    if ! [ -x "$(which $p)" ]; then
         echo "$p is not installed or in the scripts PATH"; exit 1;
     fi
 done

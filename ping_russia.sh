@@ -82,7 +82,7 @@ done
 
 if [ ! -f ./servers.txt ] ; then
   echo "Please provide a servers.txt file with a server per line."
-  exit(255)
+  exit
 fi
 
 while true

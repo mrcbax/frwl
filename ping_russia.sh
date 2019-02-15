@@ -68,7 +68,7 @@ _randomDir() {
 #~~~~~~~~~~~~~~~~#
 #~ script_start ~#
 #~~~~~~~~~~~~~~~~#
-TIMEZONE=$(date +”%Z %z”)
+TIMEZONE=$(date +”%Z”)
 _log date "${TIMEZONE}"
 _log date "[main]script start"
 _checkPath "${WORKING_DIR}"

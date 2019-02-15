@@ -37,12 +37,15 @@ _log() {
 			printf '%s\n' "$@" >> ${LOG_FILE}
 			;;
 	esac
-} 
+}
+
 _checkPath() {
 	# Creates all paths required in the working directory.
   for one in {a..z} $(seq 0 9); do
     for two in {a..z} $(seq 0 9); do
-      mkdir -p $1/${one}/${two}
+      for three in {a..z} $(seq 0 9); do
+        mkdir -p $1/${one}/${two}/${three}
+      done
     done
   done
 	_log date "[_checkPath]checking directory $1"
@@ -58,7 +61,8 @@ _tarBall() {
 
 # Get a random three level directory name.
 _randomDir() {
-  echo $(dd if=/dev/urandom bs=512 count=1 2>&1 | md5sum | tail -1 | awk '{print $1}' | cut -b1,2 --output-delimiter=/)
+  DIR=$(echo $(dd if=/dev/urandom bs=512 count=1 2>&1) | md5sum | tail -1 | awk '{print $1}' | cut -b1,2,3 --output-delimiter=/)
+  echo ${DIR}
 }
 
 #~~~~~~~~~~~~~~~~#
@@ -85,14 +89,10 @@ while true
 do
   for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do
     TIME=$(date +%s)
-    SIZE=$(du -s -B 50M "${WORKING_DIR}" | awk '{print $1}')
+    SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
-    # Check collected working data, archive if enough data is collected.
-    if [ ${SIZE} -gt 1 ] ; then
-      _tarBall
-      _checkPath "${WORKING_DIR}"
-    fi
+    [ ${SIZE} -gt 1 ] && _tarBall
     traceroute -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.new"
   done
 done

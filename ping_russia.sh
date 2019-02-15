@@ -68,6 +68,8 @@ _randomDir() {
 #~~~~~~~~~~~~~~~~#
 #~ script_start ~#
 #~~~~~~~~~~~~~~~~#
+TIMEZONE=$(date +”%Z”)
+_log date "${TIMEZONE}"
 _log date "[main]script start"
 _checkPath "${WORKING_DIR}"
 _checkPath "${TARBALL_DIR}"
@@ -80,7 +82,7 @@ done
 
 if [ ! -f ./servers.txt ] ; then
   echo "Please provide a servers.txt file with a server per line."
-  exit(255)
+  exit
 fi
 
 while true

@@ -43,9 +43,7 @@ _checkPath() {
 	# Creates all paths required in the working directory.
   for one in {a..z} $(seq 0 9); do
     for two in {a..z} $(seq 0 9); do
-      for three in {a..z} $(seq 0 9); do
-        mkdir -p $1/${one}/${two}/${three}
-      done
+      mkdir -p $1/${one}/${two}
     done
   done
 	_log date "[_checkPath]checking directory $1"
@@ -61,8 +59,7 @@ _tarBall() {
 
 # Get a random three level directory name.
 _randomDir() {
-  DIR=$(echo $(dd if=/dev/urandom bs=512 count=1 2>&1) | md5sum | tail -1 | awk '{print $1}' | cut -b1,2,3 --output-delimiter=/)
-  echo ${DIR}
+  echo $(dd if=/dev/urandom bs=512 count=1 2>&1 | md5sum | tail -1 | awk '{print $1}' | cut -b1,2 --output-delimiter=/)
 }
 
 #~~~~~~~~~~~~~~~~#
@@ -89,7 +86,7 @@ while true
 do
   for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do
     TIME=$(date +%s)
-    SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
+    SIZE=$(du -s -B 50M "${WORKING_DIR}" | awk '{print $1}')
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
     [ ${SIZE} -gt 1 ] && _tarBall

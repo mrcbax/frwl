@@ -85,7 +85,7 @@ if [ ! -f ./servers.txt ] ; then
   echo "Please provide a servers.txt file with a server per line."
   exit
 fi
-i
+
 while true
 do
   for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do

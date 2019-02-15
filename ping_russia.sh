@@ -37,8 +37,7 @@ _log() {
 			printf '%s\n' "$@" >> ${LOG_FILE}
 			;;
 	esac
-}
-
+} 
 _checkPath() {
 	# Creates all paths required in the working directory.
   for one in {a..z} $(seq 0 9); do
@@ -89,7 +88,11 @@ do
     SIZE=$(du -s -B 50M "${WORKING_DIR}" | awk '{print $1}')
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
-    [ ${SIZE} -gt 1 ] && _tarBall
+    # Check collected working data, archive if enough data is collected.
+    if [ ${SIZE} -gt 1 ] ; then
+      _tarBall
+      _checkPath "${WORKING_DIR}"
+    fi
     traceroute -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.new"
   done
 done

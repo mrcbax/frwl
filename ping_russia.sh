@@ -19,6 +19,10 @@ WORKING_DIR="./working_dir" #directory for uncompressed raw data
 TARBALL_DIR="./from_russia_with_love_comp" #directory for compressed tarballs
 DEPENDENCIES=(traceroute tar); #not every distro has these pre-installed
 
+if [ "X${PROBES}" = "X" ]; then
+  PROBES=1
+fi
+
 #~~~~~~~~~~~~~#
 #~ Functions ~#
 #~~~~~~~~~~~~~#
@@ -43,9 +47,7 @@ _checkPath() {
 	# Creates all paths required in the working directory.
   for one in {a..z} $(seq 0 9); do
     for two in {a..z} $(seq 0 9); do
-      for three in {a..z} $(seq 0 9); do
-        mkdir -p $1/${one}/${two}/${three}
-      done
+      mkdir -p $1/${one}/${two}
     done
   done
 	_log date "[_checkPath]checking directory $1"
@@ -53,16 +55,15 @@ _checkPath() {
 
 _tarBall() {
 	#~creates tarball of collected data with id/timestamp range
-	tar cjf "${TARBALL_DIR}/${_randomDir}/${COMP_ITER}.${TIME}.${SERVER}.tar.xz" "${WORKING_DIR}"/* && rm "$WORKING_DIR"/*
-	_log date "[_tarBall]created tarball '${COMP_ITER}.${TIME}.${SERVER}.tar.xz'"
+	tar -cjf "${TARBALL_DIR}/${_randomDir}/${COMP_ITER}.${TIME}.${SERVER}.tar.bz2" "${WORKING_DIR}"/* && rm -rf "$WORKING_DIR"/*
+	_log date "[_tarBall]created tarball '${COMP_ITER}.${TIME}.${SERVER}.tar.bz2'"
 	COMP_ITER=$(( COMP_ITER + 1 ))
 	ITER=0
 }
 
 # Get a random three level directory name.
 _randomDir() {
-  DIR=$(echo $(dd if=/dev/urandom bs=512 count=1 2>&1) | md5sum | tail -1 | awk '{print $1}' | cut -b1,2,3 --output-delimiter=/)
-  echo ${DIR}
+  echo $(dd if=/dev/urandom bs=512 count=1 2>&1 | md5sum | tail -1 | awk '{print $1}' | cut -b1,2 --output-delimiter=/)
 }
 
 #~~~~~~~~~~~~~~~~#
@@ -75,8 +76,8 @@ _checkPath "${WORKING_DIR}"
 _checkPath "${TARBALL_DIR}"
 
 for p in "${DEPENDENCIES[@]}"; do
-	if ! [ -x "$(command -v $p)" ]; then
-        echo "$p is not installed"; exit 1;
+	if ! [ -x "$(which $p)" ]; then
+        echo "$p is not installed or in the scripts PATH"; exit 1;
     fi
 done
 
@@ -89,10 +90,13 @@ while true
 do
   for SERVER in $(grep -v '^#' ${SERVERS} | grep -v '^$' | /usr/bin/sort -R | head -${PROBES}); do
     TIME=$(date +%s)
-    SIZE=$(du -B 50M "${WORKING_DIR}" | cut -d "	" -f 1)
+    SIZE=$(du -s -B 50M "${WORKING_DIR}" | awk '{print $1}')
     traceroute -n -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.old"
     ITER=$(( ITER + 1 ))
-    [ ${SIZE} -gt 1 ] && _tarBall
+    if [ ${SIZE} -gt 1 ]; then
+      _tarBall
+      _checkPath "${WORKING_DIR}"
+    fi
     traceroute -I ${SERVER} > "${WORKING_DIR}/$(_randomDir)/${ITER}.${TIME}.new"
   done
 done

@@ -75,8 +75,7 @@ Docker Run
 
 By creating a script to create multiple containers and volumes to automate launching containers with different IPs will be able to test against many servers easily.
 
-
-docker run -d --name frwl -v "localvolume":/from_russia_with_love_comp -e ServerIP="IP/Host" danukefl/frwl
+docker run -d --name frwl -v "localvolume":/from_russia_with_love_comp -e SERVER_COUNT="n" danukefl/frwl
 
 
 

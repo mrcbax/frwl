@@ -3,6 +3,12 @@ FRWL: From Russia with love
 
 link to inception [Reddit thread](https://www.reddit.com/r/DataHoarder/comments/apsd7v/with_russia_going_offline_for_a_test_some_time/)
 
+There is a survey available for those participating: [Google Form](https://goo.gl/forms/l2zbfzblneP6D6sE3)
+
+There is also a place to submit any IPFS hashes of data you've collected: [Google Form](https://goo.gl/forms/o3vXwj4NPzODAttR2)
+
+If you all would like a place to chat I've set up an orbit channel (IPFS based chat): [Orbit Channel](https://orbit.chat/#/channel/frwl) (Just join #frwl by clicking the channel menu in the top left. Seems hot-linking doesn't work.)
+
 Goals
 ---
 
@@ -43,6 +49,8 @@ Your traceroute logs should have a bunch of data. but if there are a bunch of `*
 
 Watch for updates to the script they may be important for data processing. You may have to work them into your environment somehow.
 
+If you are editing the code tabs are 4 spaces. Don't make me write a `CONTRIBUTING.md`.
+
 
 Extra stuff
 ---
@@ -78,10 +86,12 @@ Contributors
 We <3 you!
 ---
 
-**/u/BigT905 and /u/orangejuice3 for the Shodan results! Massive contribution thank you!**
+- **/u/BigT905 and /u/orangejuice3 for the Shodan results! Massive contribution thank you!**
 
-/u/meostro Final compression command.
+- /u/meostro: Final compression command.
 
-Colseph Awesome script mods
+- Colseph: Awesome script mods
 
-Danuke for Dockerfile and image creation.
+- Danuke: for Dockerfile and image creation.
+
+- gidoBOSSftw5731: FreeBSD support.

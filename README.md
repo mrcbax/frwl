@@ -9,6 +9,8 @@ There is also a place to submit any IPFS hashes of data you've collected: [Googl
 
 If you all would like a place to chat I've set up an orbit channel (IPFS based chat): [Orbit Channel](https://orbit.chat/#/channel/frwl) (Just join #frwl by clicking the channel menu in the top left. Seems hot-linking doesn't work.)
 
+Server IPs can now be claimed on peerpad by putting a `#` in front of them. [PeerPad](http://peerpad.net/#/w/markdown/24VD18B3PSMydk71EmnqP6rR4Qb3ALpD4hzjyfpimrMN/4XTTMG5x54YLTHkcbrAdFFfRFMVkeZGkPFCnJdfUezqkneHnv-K3TgTtAKiwiWvrhkQYh1B38y8u7bsrCDwvndCnb7F6j2kjjmgWcFgitafJh7VpS26dpXtwHP9mtZJhWwzwXCtvXYrbDTBMakDFbcSGSVzN3QZVzExUjtofm2dMHNWesXRdQsSKta)
+
 Goals
 ---
 

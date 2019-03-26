@@ -72,7 +72,7 @@ _log date "${TIMEZONE}"
 _log date "[main]script start"
 
 for p in "${DEPENDENCIES[@]}"; do
-    if ! [ -x "$(which $p)" ]; then
+    if ! [ -x "$(command -v $p)" ]; then
         echo "$p is not installed or in the scripts PATH"; exit 1;
     fi
 done

@@ -1,6 +1,9 @@
 FRWL: From Russia with love
 ===
 
+We've hit the deadline. Nothing has happened. Anyone who has any info should let us know!
+===
+
 link to inception [Reddit thread](https://www.reddit.com/r/DataHoarder/comments/apsd7v/with_russia_going_offline_for_a_test_some_time/)
 
 There is a survey available for those participating: [Google Form](https://goo.gl/forms/l2zbfzblneP6D6sE3)

@@ -1,8 +1,10 @@
 FRWL: From Russia with love
 ===
 
-We've hit the deadline. Nothing has happened. Anyone who has any info should let us know!
+Announcement
 ===
+
+I have been in contact with an unamed source who has let me know that we can expect the shutdown to happen between now and late fall. There is more that I am not at liberty to say at this time. 
 
 link to inception [Reddit thread](https://www.reddit.com/r/DataHoarder/comments/apsd7v/with_russia_going_offline_for_a_test_some_time/)
 

@@ -3,6 +3,9 @@ FRWL: From Russia with love
 
 Announcement
 ===
+I can now confirm that this article aligns with what my contact has told me: 
+
+https://www.zdnet.com/article/putin-signs-runet-law-to-cut-russias-internet-off-from-rest-of-world/
 
 I have been in contact with an unamed source who has let me know that we can expect the shutdown to happen between now and late fall. There is more that I am not at liberty to say at this time. 
 
